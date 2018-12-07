@@ -1,4 +1,4 @@
-package com.example.android.todo_list.Screens.Repository;
+package com.example.android.todo_list.Screens.Database;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
@@ -15,12 +15,11 @@ public abstract class NoteDatabase extends RoomDatabase {
 
     private static NoteDatabase instance;
 
-    static NoteDatabase getInstance(Context context){
+    public static NoteDatabase getInstance(Context context){
         if (instance == null){
             instance = Room.databaseBuilder(context,NoteDatabase.class,"note_database")
                     .build();
         }
         return instance;
     }
-
 }
