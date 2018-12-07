@@ -1,7 +1,9 @@
-package com.example.android.todo_list;
+package com.example.android.todo_list.Screens;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.android.todo_list.R;
 
 public class NoteActivity extends AppCompatActivity {
 
