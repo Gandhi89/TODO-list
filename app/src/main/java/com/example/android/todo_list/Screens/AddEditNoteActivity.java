@@ -10,7 +10,7 @@ import android.widget.NumberPicker;
 
 import com.example.android.todo_list.R;
 
-public class AddNoteActivity extends AppCompatActivity {
+public class AddEditNoteActivity extends AppCompatActivity {
 
     EditText title;
     EditText description;
@@ -28,20 +28,28 @@ public class AddNoteActivity extends AppCompatActivity {
         numberPicker.setMinValue(0);
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow);
-        setTitle("Add Note");
 
+        Intent intent = getIntent();
+        if (intent.hasExtra("id")) {
+            setTitle("Edit Note");
+            title.setText(intent.getStringExtra("title"));
+            description.setText(intent.getStringExtra("description"));
+            numberPicker.setValue(intent.getIntExtra("priority", 1));
+        } else {
+            setTitle("Add Note");
+        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.note_add,menu);
+        getMenuInflater().inflate(R.menu.note_add, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.save_note){
+        if (id == R.id.save_note) {
             saveNote();
         }
         return true;
@@ -49,14 +57,18 @@ public class AddNoteActivity extends AppCompatActivity {
 
     private void saveNote() {
         String note_title = title.getText().toString();
-        String  note_description = title.getText().toString();
+        String note_description = description.getText().toString();
         int note_priority = numberPicker.getValue();
 
         Intent intent = new Intent();
-        intent.putExtra("note_title",note_title);
-        intent.putExtra("note_description",note_description);
-        intent.putExtra("note_priority",note_priority);
-        setResult(RESULT_OK,intent);
+        intent.putExtra("note_title", note_title);
+        intent.putExtra("note_description", note_description);
+        intent.putExtra("note_priority", note_priority);
+        int id = getIntent().getIntExtra("id",-1);
+        if (id != -1){
+            intent.putExtra("id",id);
+        }
+        setResult(RESULT_OK, intent);
         finish();
     }
 }

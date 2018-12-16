@@ -23,12 +23,15 @@ import com.example.android.todo_list.Screens.ViewModel.NoteViewModel;
 
 import java.util.List;
 
-public class NoteActivity extends AppCompatActivity implements View.OnClickListener {
+public class NoteActivity extends AppCompatActivity implements View.OnClickListener, NoteAdapter.onItemClickListner {
 
     NoteViewModel noteViewModel;
     RecyclerView recyclerView;
     NoteAdapter noteAdapter;
     FloatingActionButton floatingActionButton;
+
+    public static final int ADD_NOTE_REQUEST = 1;
+    public static final int EDIT_NOTE_REQUEST = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,7 @@ public class NoteActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         floatingActionButton.setOnClickListener(this);
+        noteAdapter.setOnItemClickListner(this);
     }
 
     @Override
@@ -87,8 +91,8 @@ public class NoteActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.noteActivity_floatingButton:
-                Intent intent = new Intent(NoteActivity.this,AddNoteActivity.class);
-                startActivityForResult(intent,1);
+                Intent intent = new Intent(NoteActivity.this,AddEditNoteActivity.class);
+                startActivityForResult(intent,ADD_NOTE_REQUEST);
                 break;
         }
     }
@@ -96,7 +100,7 @@ public class NoteActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK){
+        if (requestCode == ADD_NOTE_REQUEST && resultCode == RESULT_OK){
             String note_title = data.getStringExtra("note_title");
             String note_description = data.getStringExtra("note_description");
             int note_priority = data.getIntExtra("note_priority",0);
@@ -105,8 +109,31 @@ public class NoteActivity extends AppCompatActivity implements View.OnClickListe
 
             Toast.makeText(this, "Note saved", Toast.LENGTH_SHORT).show();
         }
+        else if (requestCode == EDIT_NOTE_REQUEST && resultCode == RESULT_OK){
+            String note_title = data.getStringExtra("note_title");
+            String note_description = data.getStringExtra("note_description");
+            int note_priority = data.getIntExtra("note_priority",0);
+            int note_id = data.getIntExtra("id",0);
+
+            Note note = new Note(note_title,note_description,note_priority);
+            note.setId(note_id);
+            noteViewModel.update(note);
+
+            Toast.makeText(this, "Note Updated", Toast.LENGTH_SHORT).show();
+        }
         else {
             Toast.makeText(this, "Note not saved", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onItemClick(Note note) {
+        Intent intent = new Intent(NoteActivity.this,AddEditNoteActivity.class);
+        intent.putExtra("id",note.getId());
+        intent.putExtra("title",note.getTitle());
+        intent.putExtra("description",note.getDescription());
+        intent.putExtra("priority",note.getPriority());
+        startActivityForResult(intent,EDIT_NOTE_REQUEST);
+
     }
 }
