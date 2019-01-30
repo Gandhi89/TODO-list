@@ -4,6 +4,10 @@ A note taking app, using the Android Architecture Component libraries (`Room`, `
 
 ![](todo.gif)
 
+
+[Why Android Architecture?](#how-to-use)
+[Demo App](#how-to-use)
+
 ## Why Android Architecture Components?
 
 Android architecture components are a collection of libraries that help you design robust, testable, and maintainable apps. Start with classes for managing your UI component lifecycle and handling data persistence.
