@@ -1,4 +1,4 @@
-# To Do List - Not your no
+# To Do List - Not your ordinary to-do list!
 
 A note taking app, using the Android Architecture Component libraries (`Room`, `ViewModel`, `LiveData` and `LifeCycle`), a RecyclerView and Java. The data will be stored in an SQLite database and supports insert, read, update and delete operations.Together, this whole structure constitues an `MVVM (Model-View-ViewModel)` architecture, which follows the single responsibility and separation of concerns principles.
 
@@ -6,7 +6,9 @@ A note taking app, using the Android Architecture Component libraries (`Room`, `
 
 
 [Why Android Architecture?](#why-android-architecture-components)
-[Demo App](#how-to-use)
+[How Android Architecture Components Work](#how-android-architecture-components-work)
+[Build Instructions] (#build-instructions)
+[Demo] (#demonstration)
 
 ## Why Android Architecture Components?
 
@@ -35,7 +37,7 @@ Android architecture components are a collection of libraries that help you desi
 
 **LiveData**: A data holder class that can be observed. Always holds/caches latest version of data. Notifies its observers when the data has changed. LiveData is lifecycle aware. UI components just observe relevant data and don't stop or resume observation. LiveData automatically manages all of this since it's aware of the relevant lifecycle status changes while observing.
 
-## Build Instruction
+## Build Instructions
 
 Android Studio 3.0 or later. Make sure Android Studio is updated, as well as your SDK and Gradle.
 
