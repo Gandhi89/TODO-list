@@ -7,8 +7,8 @@ A note taking app, using the Android Architecture Component libraries (`Room`, `
 
 - [Why Android Architecture?](#why-android-architecture-components)
 - [How Android Architecture Components Work](#how-android-architecture-components-work)
-- [Build Instructions] (#build-instructions)
-- [Demo] (#demonstration)
+- [Build Instructions](#build-instructions)
+- [Demo](#demonstration)
 
 ## Why Android Architecture Components?
 
