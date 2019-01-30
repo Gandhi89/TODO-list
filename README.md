@@ -1,11 +1,11 @@
-# TODO-list
+# To Do List - Not your no
 
 A note taking app, using the Android Architecture Component libraries (`Room`, `ViewModel`, `LiveData` and `LifeCycle`), a RecyclerView and Java. The data will be stored in an SQLite database and supports insert, read, update and delete operations.Together, this whole structure constitues an `MVVM (Model-View-ViewModel)` architecture, which follows the single responsibility and separation of concerns principles.
 
 ![](todo.gif)
 
 
-[Why Android Architecture?](#how-to-use)
+[Why Android Architecture?](#why-android-architecture-components)
 [Demo App](#how-to-use)
 
 ## Why Android Architecture Components?
