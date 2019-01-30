@@ -4,6 +4,7 @@ A note taking app, using the Android Architecture Component libraries (`Room`, `
 
 ![](todo.gif)
 
+## Content
 
 - [Why Android Architecture?](#why-android-architecture-components)
 - [How Android Architecture Components Work](#how-android-architecture-components-work)
