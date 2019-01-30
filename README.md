@@ -2,6 +2,8 @@
 
 A note taking app, using the Android Architecture Component libraries (`Room`, `ViewModel`, `LiveData` and `LifeCycle`), a RecyclerView and Java. The data will be stored in an SQLite database and supports insert, read, update and delete operations.Together, this whole structure constitues an `MVVM (Model-View-ViewModel)` architecture, which follows the single responsibility and separation of concerns principles.
 
+![](todo.gif)
+
 ## Why Android Architecture Components?
 
 Android architecture components are a collection of libraries that help you design robust, testable, and maintainable apps. Start with classes for managing your UI component lifecycle and handling data persistence.
